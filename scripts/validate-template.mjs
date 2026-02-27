@@ -198,14 +198,14 @@ async function main() {
     addWarning("No logo specified in plugin.json.");
   }
 
-  const mcpPath = path.join(repoRoot, "mcp.json");
+  const mcpPath = path.join(repoRoot, ".mcp.json");
   if (await pathExists(mcpPath)) {
     const mcp = await readJsonFile(mcpPath, "MCP configuration");
     if (mcp && (!mcp.mcpServers || Object.keys(mcp.mcpServers).length === 0)) {
-      addWarning("mcp.json has no servers defined in mcpServers.");
+      addWarning(".mcp.json has no servers defined in mcpServers.");
     }
   } else {
-    addWarning("No mcp.json found.");
+    addWarning("No .mcp.json found.");
   }
 
   await validateComponentFrontmatter();

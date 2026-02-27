@@ -7,6 +7,8 @@
     "name": "GitLab",
     "email": "developer-relations@gitlab.com"
   },
+  "homepage": "https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/mcp_server/",
+  "repository": "https://gitlab.com/gitlab-org/developer-relations/cursor-gitlab-plugin",
   "license": "MIT",
   "keywords": ["gitlab", "devops", "ci-cd", "merge-request", "pipeline", "mcp"],
   "logo": "assets/logo.svg"

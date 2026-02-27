@@ -24,7 +24,7 @@ your editor.
 ### Self-Managed instances
 
 The plugin connects to **gitlab.com** by default. To use a self-managed
-instance instead, copy `mcp.json.self-managed.example` to `mcp.json` and
+instance instead, copy `.mcp.json.self-managed.example` to `.mcp.json` and
 replace `https://gitlab.example.com` with your instance URL:
 
 ```json
