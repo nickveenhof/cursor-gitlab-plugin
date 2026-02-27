@@ -1,0 +1,13 @@
+{
+  "name": "gitlab",
+  "displayName": "GitLab",
+  "version": "0.1.0",
+  "description": "Connect Cursor to GitLab with the GitLab MCP server. Manage issues, merge requests, pipelines, and search code.",
+  "author": {
+    "name": "GitLab",
+    "email": "developer-relations@gitlab.com"
+  },
+  "license": "MIT",
+  "keywords": ["gitlab", "devops", "ci-cd", "merge-request", "pipeline", "mcp"],
+  "logo": "assets/logo.svg"
+}

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "GitLab": {
+      "type": "http",
+      "url": "https://gitlab.com/api/v4/mcp"
+    },
+    "GitLab Self-Managed": {
+      "type": "http",
+      "url": "https://gitlab.example.com/api/v4/mcp"
+    }
+  }
+}
