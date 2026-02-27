@@ -17,13 +17,26 @@ your editor.
 1. Install the **GitLab** plugin from the Cursor Marketplace.
 2. Open **Settings > Cursor Settings > Tools & MCP** and verify the GitLab MCP
    server appears.
-3. **Self-Managed users**: edit `mcp.json` and replace
-   `https://gitlab.example.com` with your instance URL.
-   Remove the `"GitLab Self-Managed"` entry if you only use GitLab.com, or
-   remove the `"GitLab"` entry if you only use a self-managed instance.
-4. Save and wait for your browser to open the OAuth authorization page.
+3. Save and wait for your browser to open the OAuth authorization page.
    If this does not happen, restart Cursor.
-5. Review and approve the authorization request.
+4. Review and approve the authorization request.
+
+### Self-Managed instances
+
+The plugin connects to **gitlab.com** by default. To use a self-managed
+instance instead, copy `mcp.json.self-managed.example` to `mcp.json` and
+replace `https://gitlab.example.com` with your instance URL:
+
+```json
+{
+  "mcpServers": {
+    "GitLab": {
+      "type": "http",
+      "url": "https://your-gitlab-instance.com/api/v4/mcp"
+    }
+  }
+}
+```
 
 ## What's included
 
