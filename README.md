@@ -2,7 +2,7 @@
 
 Connect [Cursor](https://cursor.com) to your GitLab instance with the
 [GitLab MCP server](https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/mcp_server/).
-Manage issues, merge requests, pipelines, and search code — all from within
+Plan, track, and manage issues, merge requests, and pipelines — all from within
 your editor.
 
 ## Requirements
@@ -11,6 +11,8 @@ your editor.
 - GitLab Premium or Ultimate with
   [GitLab Duo](https://docs.gitlab.com/user/gitlab_duo/) and
   [beta features](https://docs.gitlab.com/user/duo_agent_platform/turn_on_off/#turn-on-beta-and-experimental-features) enabled.
+  On the Free tier? [Compare plans](https://about.gitlab.com/pricing/) or
+  [start a free trial](https://gitlab.com/-/trial_registrations/new) to get started.
 
 ## Setup
 
@@ -76,33 +78,91 @@ gives Cursor direct access to your GitLab data through these
 
 ### Agents
 
-- **gitlab-assistant** — General-purpose assistant that uses the MCP server to
-  manage issues, merge requests, and pipelines.
+- **gitlab-assistant** (Duo Planner) — Product Manager AI that helps with Agile
+  planning, prioritization, delivery tracking, and stakeholder communication
+  using the MCP server.
 
 ### Commands
 
+- **create-issue** — Create an issue with labels, milestone, and assignees.
 - **create-merge-request** — Create a merge request from the current branch.
+- **review-merge-request** — Review a merge request: summarize changes, check
+  pipelines, and flag concerns.
+- **pipeline-status** — Check pipeline health and drill into failed jobs.
+- **plan-sprint** — Analyze open issues and suggest sprint scope and priorities.
+- **backlog-health** — Assess the backlog for staleness, missing labels, and
+  unassigned work.
+
+## Example prompts
+
+Try these in Cursor chat. Prefix your prompt with `/gitlab-assistant` to
+route it to the GitLab agent:
+
+### Issues and planning
+
+- "/gitlab-assistant Show me all open issues labeled `bug` in `my-group/my-project`"
+- "/gitlab-assistant Create an issue for the API rate limiting feature with appropriate labels"
+- "/gitlab-assistant What issues are assigned to me in this project?"
+- "/gitlab-assistant Summarize the open issues in milestone 3.2"
+
+### Sprint and backlog
+
+- "/gitlab-assistant Help me plan the next sprint for milestone 3.2 in `my-group/my-project`"
+- "/gitlab-assistant Analyze the backlog health for `my-group/my-project`"
+- "/gitlab-assistant Which open issues have no assignee or labels?"
+
+### Merge requests
+
+- "/gitlab-assistant Create a merge request from my current branch to main"
+- "/gitlab-assistant Review merge request !142 in `my-group/my-project`"
+- "/gitlab-assistant What files changed in MR !89?"
+- "/gitlab-assistant Show me the commits in merge request !56"
+
+### Pipelines and CI/CD
+
+- "/gitlab-assistant What's the pipeline status for `my-group/my-project`?"
+- "/gitlab-assistant Which jobs failed in the latest pipeline?"
+- "/gitlab-assistant Retry the failed pipeline for this project"
+
+### Search and discovery
+
+- "/gitlab-assistant Search for issues mentioning 'authentication timeout'"
+- "/gitlab-assistant Find code related to user permissions in `my-group/my-project`"
+- "/gitlab-assistant What labels are available in this project?"
+
+### Comments and collaboration
+
+- "/gitlab-assistant Show me the comments on issue #42 in `my-group/my-project`"
+- "/gitlab-assistant Add a comment to issue #42 summarizing the investigation"
 
 ## GitLab Duo Agent Platform
 
-For AI-powered agents that can autonomously create code, review merge requests,
-fix pipelines, and more, explore the
-**[GitLab Agent Catalog](https://gitlab.com/explore/ai-catalog/agents/)**.
+This plugin gives you core GitLab workflows in Cursor. For AI-powered agents
+that can autonomously plan, analyze, create code, review merge requests, fix
+pipelines, and more, explore the
+**[GitLab Duo Agent Platform](https://docs.gitlab.com/user/duo_agent_platform/)**
+and the **[GitLab Agent Catalog](https://gitlab.com/explore/ai-catalog/agents/)**.
 
-Available agents and flows include:
+### Foundational Agents
 
-- **[Planner Agent](https://docs.gitlab.com/user/duo_agent_platform/agents/foundational_agents/planner/)** — Plan, prioritize, and track work.
-- **[Security Analyst Agent](https://docs.gitlab.com/user/duo_agent_platform/agents/foundational_agents/security_analyst_agent/)** — Triage issues, analyze vulnerabilities, and generate fixes.
-- **[Custom agents](https://docs.gitlab.com/user/duo_agent_platform/agents/custom/)** — Build team-specific agents for your unique requirements.
-- **[External agents](https://docs.gitlab.com/user/duo_agent_platform/agents/external/)** — Connect third-party integrations (Claude Code, OpenAI Codex, Amazon Q, Gemini) to GitLab.
-- **[Software Development Flow](https://docs.gitlab.com/user/duo_agent_platform/flows/foundational_flows/software_development/)** — Create a full, multi-step plan before executing it.
+- **[Planner Agent](https://docs.gitlab.com/user/duo_agent_platform/agents/foundational_agents/planner/)** — Full work item CRUD, epic/task hierarchy, dependency analysis, estimation, and planning workflows.
+- **[Security Analyst Agent](https://docs.gitlab.com/user/duo_agent_platform/agents/foundational_agents/security_analyst_agent/)** — Vulnerability triage, risk assessment, compliance reporting, and remediation planning.
+- **[Data Analyst Agent](https://docs.gitlab.com/user/duo_agent_platform/agents/foundational_agents/data_analyst/)** — GLQL queries, volume analysis, team performance metrics, and trend visualization.
+
+### Foundational Flows
+
+- **[Software Development Flow](https://docs.gitlab.com/user/duo_agent_platform/flows/foundational_flows/software_development/)** — AI-generated solutions across the software development lifecycle.
 - **[Developer Flow](https://docs.gitlab.com/user/duo_agent_platform/flows/foundational_flows/developer/)** — Convert issues into merge requests.
 - **[Fix CI/CD Pipeline Flow](https://docs.gitlab.com/user/duo_agent_platform/flows/foundational_flows/fix_pipeline/)** — Diagnose and fix failing pipelines.
-- **[Code Review Flow](https://docs.gitlab.com/user/duo_agent_platform/flows/foundational_flows/code_review/)** — Automate code review and enforce standards.
+- **[Code Review Flow](https://docs.gitlab.com/user/duo_agent_platform/flows/foundational_flows/code_review/)** — Automate code review with AI-native analysis.
 - **[Convert to GitLab CI/CD Flow](https://docs.gitlab.com/user/duo_agent_platform/flows/foundational_flows/convert_to_gitlab_ci/)** — Migrate legacy CI/CD to GitLab.
+- **[Agentic SAST Vulnerability Resolution](https://docs.gitlab.com/user/duo_agent_platform/flows/foundational_flows/agentic_sast_vulnerability_resolution/)** — Auto-generate merge requests to fix SAST vulnerabilities.
+- **[SAST False Positive Detection](https://docs.gitlab.com/user/duo_agent_platform/flows/foundational_flows/sast_false_positive_detection/)** — Identify and filter false positives in SAST findings.
 
-Learn more about the
-[GitLab Duo Agent Platform](https://docs.gitlab.com/user/duo_agent_platform/).
+### Extend further
+
+- **[Custom agents](https://docs.gitlab.com/user/duo_agent_platform/agents/custom/)** — Build team-specific agents for your unique requirements.
+- **[External agents](https://docs.gitlab.com/user/duo_agent_platform/agents/external/)** — Connect third-party integrations (Claude Code, OpenAI Codex, Amazon Q, Gemini) to GitLab.
 
 ## Links
 
