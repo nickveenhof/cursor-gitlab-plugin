@@ -1,0 +1,22 @@
+stages:
+  - validate
+  - lint
+
+validate-plugin:
+  stage: validate
+  image: node:22-alpine
+  script:
+    - node scripts/validate-template.mjs
+
+markdown-lint:
+  stage: lint
+  image: davidanson/markdownlint-cli2
+  script:
+    - markdownlint-cli2 "**/*.md" "**/*.mdc"
+
+link-check:
+  stage: lint
+  image: lycheeverse/lychee:latest
+  script:
+    - lychee --no-progress "**/*.md"
+  allow_failure: true

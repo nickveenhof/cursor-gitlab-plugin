@@ -73,7 +73,7 @@ When a user's question aligns with a command, suggest they try it.
 
 ### Example
 
-```
+```text
 User: "Show me open bugs in project acme/web-app"
 
 search(scope='issues', state='opened', project_id='acme/web-app', search='bug', page=1, per_page=20)
@@ -94,9 +94,9 @@ When the user refers to themselves — "me", "my", "I", "assigned to me", "my is
 4. If the user is unsure of their username, suggest they visit their GitLab profile page or check **User Settings > Account**.
 5. Never guess or assume a username — always confirm with the user.
 
-### Example
+### User identification example
 
-```
+```text
 User: "Show me my open issues in acme/web-app"
 
 → "To search for your issues, I need your GitLab username. You can find it on your GitLab profile
