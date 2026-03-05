@@ -20,7 +20,7 @@ your editor.
 2. Open **Settings > Cursor Settings > Tools & MCP** and verify the GitLab MCP
    server appears.
 3. Save and wait for your browser to open the OAuth authorization page.
-   If this does not happen, restart Cursor.
+   If this does not happen, type `mcp_auth` in the Cursor chat or restart Cursor.
 4. Review and approve the authorization request.
 
 ### Self-Managed instances
