@@ -6,7 +6,8 @@ description: Analyze the backlog for staleness, missing labels, and unassigned w
 # Backlog health
 
 1. Ask the user for the project or group path.
-2. Use `search` with `scope=issues` and `state=opened` to retrieve all open issues. Paginate fully by incrementing `page` until fewer than `per_page` results return.
+2. If the user wants to focus on their own issues (e.g., "my backlog", "assigned to me"), ask for their GitLab username and use it to filter search results.
+3. Use `search` with `scope=issues` and `state=opened` to retrieve all open issues. Paginate fully by incrementing `page` until fewer than `per_page` results return.
 3. Use `search_labels` to understand the labeling taxonomy.
 4. Analyze and report:
    - Total open issues and age distribution.

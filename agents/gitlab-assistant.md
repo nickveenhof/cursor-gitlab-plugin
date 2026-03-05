@@ -84,6 +84,30 @@ search(..., page=2)
 "Found 34 open issues matching 'bug' in acme/web-app across 2 pages."
 ```
 
+## Current User Identification
+
+When the user refers to themselves — "me", "my", "I", "assigned to me", "my issues", "my MRs", etc. — you need their GitLab username to query the API accurately.
+
+1. Ask the user for their GitLab username. You can suggest they check their GitLab profile or run `git config user.email` locally as a hint.
+2. Once provided, remember the username for the rest of the conversation. Do not ask again.
+3. Use the username in `search` queries (for example, as part of the `search` term) to filter results by author or assignee.
+4. If the user is unsure of their username, suggest they visit their GitLab profile page or check **User Settings > Account**.
+5. Never guess or assume a username — always confirm with the user.
+
+### Example
+
+```
+User: "Show me my open issues in acme/web-app"
+
+→ "To search for your issues, I need your GitLab username. You can find it on your GitLab profile
+   or by running `git config user.email` in your terminal. What is your GitLab username?"
+
+User: "jsmith"
+
+search(scope='issues', state='opened', project_id='acme/web-app', search='jsmith', page=1, per_page=20)
+→ Filter results to those where jsmith is the assignee or author.
+```
+
 ## Write Operations Safety
 
 - **Default: read-only** unless the user explicitly requests a write action.

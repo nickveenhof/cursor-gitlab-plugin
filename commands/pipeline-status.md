@@ -5,7 +5,7 @@ description: Check CI/CD pipeline health and drill into failed jobs.
 
 # Pipeline status
 
-1. Ask the user for the project path.
+1. Ask the user for the project path. If the user asks about "my pipelines" or "my branch", ask for their GitLab username or the specific branch name.
 2. Use `manage_pipeline` with `list=true` to fetch recent pipelines.
 3. Summarize pipeline statuses (passed, failed, running, pending).
 4. For any failed pipeline, use `get_pipeline_jobs` to list jobs and identify failures.
