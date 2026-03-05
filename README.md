@@ -78,9 +78,9 @@ gives Cursor direct access to your GitLab data through these
 
 ### Agents
 
-- **gitlab-assistant** (Duo Planner) — Product Manager AI that helps with Agile
-  planning, prioritization, delivery tracking, and stakeholder communication
-  using the MCP server.
+- **gitlab-assistant** (GitLab Assistant) — AI agent with product management
+  capabilities that helps with Agile planning, prioritization, delivery tracking,
+  and stakeholder communication using the MCP server.
 
 ### Commands
 
