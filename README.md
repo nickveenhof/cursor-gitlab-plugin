@@ -5,6 +5,11 @@ Connect [Cursor](https://cursor.com) to your GitLab instance with the
 Plan, track, and manage issues, merge requests, and pipelines — all from within
 your editor.
 
+> **Note:** This repository is mirrored on GitHub from
+> [GitLab](https://gitlab.com/gitlab-org/developer-relations/cursor-gitlab-plugin).
+> Please submit all merge requests and issues on GitLab.
+> Pull requests and issues on GitHub will not be processed.
+
 ## Requirements
 
 - A GitLab.com account **or** a GitLab Self-Managed instance (18.3+).
