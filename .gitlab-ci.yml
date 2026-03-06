@@ -16,7 +16,9 @@ markdown-lint:
 
 link-check:
   stage: lint
-  image: lycheeverse/lychee:latest
+  image:
+    name: lycheeverse/lychee:latest
+    entrypoint: [""]
   script:
-    - lychee --no-progress "**/*.md"
+    - /usr/local/bin/lychee --no-progress "**/*.md"
   allow_failure: true
