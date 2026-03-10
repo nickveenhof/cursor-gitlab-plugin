@@ -28,6 +28,20 @@ your editor.
    If this does not happen, type `mcp_auth` in the Cursor chat or restart Cursor.
 4. Review and approve the authorization request.
 
+> **"Unverified Dynamic Application" warning**: During OAuth authorization, you
+> may see a warning that Cursor is an unverified application. This is expected —
+> Cursor uses [OAuth Dynamic Client Registration](https://www.rfc-editor.org/rfc/rfc7591),
+> and GitLab flags all dynamically registered apps as unverified by design. The
+> connection is still secure. Cursor is working with GitLab's Technology Partner
+> team to get their OAuth application pre-registered and verified, which will
+> remove this warning for all users.
+>
+> **Enterprise workaround**: GitLab admins can eliminate the warning for their
+> instance by pre-registering Cursor as a trusted application. Go to
+> **Admin Area → Applications → New Application**, register Cursor, and enable
+> **Trusted**. This removes the warning and skips the consent screen for all
+> users on that instance.
+
 ### Self-Managed instances
 
 The plugin connects to **gitlab.com** by default. To use a self-managed
