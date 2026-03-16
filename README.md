@@ -190,6 +190,11 @@ and the **[GitLab Agent Catalog](https://gitlab.com/explore/ai-catalog/agents/)*
 - [GitLab Agent Catalog](https://gitlab.com/explore/ai-catalog/agents/)
 - [GitLab Duo Agent Platform](https://docs.gitlab.com/user/duo_agent_platform/)
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to
+this project.
+
 ## License
 
 MIT
