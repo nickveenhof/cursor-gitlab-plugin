@@ -1,7 +1,7 @@
 # GitLab plugin for Cursor
 
 Connect [Cursor](https://cursor.com) to your GitLab instance with the
-[GitLab MCP server](https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/mcp_server/).
+[GitLab MCP server](https://docs.gitlab.com/user/model_context_protocol/mcp_server/).
 Plan, track, and manage issues, merge requests, and pipelines — all from within
 your editor.
 
@@ -13,11 +13,17 @@ your editor.
 ## Requirements
 
 - A GitLab.com account **or** a GitLab Self-Managed instance (18.3+).
-- GitLab Premium or Ultimate with
-  [GitLab Duo](https://docs.gitlab.com/user/gitlab_duo/) and
-  [beta features](https://docs.gitlab.com/user/duo_agent_platform/turn_on_off/#turn-on-beta-and-experimental-features) enabled.
-  On the Free tier? [Compare plans](https://about.gitlab.com/pricing/) or
-  [start a free trial](https://gitlab.com/-/trial_registrations/new) to get started.
+- Available on all tiers, including Free. The MCP server moved from Premium to
+  Free in GitLab 19.2 and is currently Beta.
+- [MCP server access allowed](https://docs.gitlab.com/user/model_context_protocol/mcp_server/#prerequisites):
+  on GitLab.com for the top-level group, and on GitLab Self-Managed or GitLab
+  Dedicated for the instance.
+- For toolset selection, GitLab 19.5 or later. This plugin sends the
+  `X-Gitlab-Enabled-Mcp-Server-Toolsets` header, which was
+  [added in 19.5](https://docs.gitlab.com/user/model_context_protocol/mcp_server/#select-tool-groups-toolsets)
+  behind the `mcp_toolsets` feature flag and is disabled by default. On earlier
+  versions, or with the flag off, the header is ignored and you get the default
+  toolsets.
 
 ## Setup
 
@@ -67,28 +73,33 @@ replace `https://gitlab.example.com` with your instance URL:
 ### MCP server
 
 The core of this plugin. The
-[GitLab MCP server](https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/mcp_server/)
-gives Cursor direct access to your GitLab data. The plugin's MCP configuration
-sends the `X-Gitlab-Enabled-Mcp-Server-Toolsets: all` header so that all
-available toolsets are enabled, giving you access to these
-[tools](https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/mcp_server_tools/):
+[GitLab MCP server](https://docs.gitlab.com/user/model_context_protocol/mcp_server/)
+gives Cursor direct access to your GitLab data. Tools are grouped into
+[toolsets](https://docs.gitlab.com/user/model_context_protocol/mcp_server/#select-tool-groups-toolsets),
+and the plugin's MCP configuration sends
+`X-Gitlab-Enabled-Mcp-Server-Toolsets: all`, so every toolset is enabled,
+including the three that are otherwise opt-in:
 
-| Tool | Description |
-|------|-------------|
-| `create_issue` | Create issues in a project |
-| `get_issue` | Retrieve issue details |
-| `create_merge_request` | Create merge requests |
-| `get_merge_request` | Retrieve merge request details |
-| `get_merge_request_diffs` | View merge request file changes |
-| `get_merge_request_commits` | List merge request commits |
-| `get_merge_request_pipelines` | View merge request pipelines |
-| `manage_pipeline` | List, create, retry, cancel, or delete pipelines |
-| `get_pipeline_jobs` | List jobs in a pipeline |
-| `search` | Search issues, merge requests, and projects |
-| `semantic_code_search` | Search code by meaning |
-| `create_workitem_note` | Comment on work items |
-| `get_workitem_notes` | Retrieve work item comments |
-| `search_labels` | Search labels in a project or group |
+| Toolset | Enabled by default | Covers |
+| --------- | ------------------ | ------ |
+| `meta` | Always | MCP server metadata |
+| `core` | Yes | Projects, groups, users, search, and labels |
+| `merge_requests` | Yes | Merge requests, diffs, notes, reviews, and approvals |
+| `work_items` | Yes | Issues, epics, tasks, and their comments |
+| `repository` | Yes | Branches, commits, files, tags, and releases |
+| `ci` | Yes | Pipelines, jobs, job logs, and artifacts |
+| `duo_agent_platform` | Opt-in | Starting and tracking Duo Agent Platform sessions |
+| `wikis` | Opt-in | Wiki pages |
+| `code_security` | Opt-in | Vulnerability triage and scan profiles |
+
+To narrow the list, replace `all` with a comma-separated subset, for example
+`core,merge_requests,code_security`. Narrowing is worth doing if you run
+several MCP servers at once, because a large combined tool list makes it more
+likely the model picks the wrong tool. Toolset names are matched without regard
+to case, and an unrecognized name returns a 400 error.
+
+For the current per-tool reference, see the
+[MCP server tools documentation](https://docs.gitlab.com/user/model_context_protocol/mcp_server_tools/).
 
 ### Rules
 
@@ -190,8 +201,8 @@ and the **[GitLab Agent Catalog](https://gitlab.com/explore/ai-catalog/agents/)*
 
 ## Links
 
-- [GitLab MCP server documentation](https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/mcp_server/)
-- [MCP server tools reference](https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/mcp_server_tools/)
+- [GitLab MCP server documentation](https://docs.gitlab.com/user/model_context_protocol/mcp_server/)
+- [MCP server tools reference](https://docs.gitlab.com/user/model_context_protocol/mcp_server_tools/)
 - [GitLab Agent Catalog](https://gitlab.com/explore/ai-catalog/agents/)
 - [GitLab Duo Agent Platform](https://docs.gitlab.com/user/duo_agent_platform/)
 

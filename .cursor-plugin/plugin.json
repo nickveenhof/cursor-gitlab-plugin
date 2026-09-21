@@ -1,13 +1,13 @@
 {
   "name": "gitlab",
   "displayName": "GitLab",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Connect Cursor to GitLab with the GitLab MCP server. Plan, track, and manage issues, merge requests, and pipelines from your editor.",
   "author": {
     "name": "GitLab",
     "email": "developer-relations@gitlab.com"
   },
-  "homepage": "https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/mcp_server/",
+  "homepage": "https://docs.gitlab.com/user/model_context_protocol/mcp_server/",
   "repository": "https://gitlab.com/gitlab-org/developer-relations/cursor-gitlab-plugin",
   "license": "MIT",
   "keywords": ["gitlab", "devops", "ci-cd", "merge-request", "pipeline", "mcp"],
