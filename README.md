@@ -178,6 +178,13 @@ pipelines, and more, explore the
 **[GitLab Duo Agent Platform](https://docs.gitlab.com/user/duo_agent_platform/)**
 and the **[GitLab Agent Catalog](https://gitlab.com/explore/ai-catalog/agents/)**.
 
+The MCP server in this plugin works on every tier, but the agents and flows
+below need GitLab Premium or Ultimate with
+[GitLab Duo](https://docs.gitlab.com/user/gitlab_duo/) and
+[beta features](https://docs.gitlab.com/user/duo_agent_platform/turn_on_off/#turn-on-beta-and-experimental-features)
+enabled. [Compare plans](https://about.gitlab.com/pricing/) or
+[start a free trial](https://gitlab.com/-/trial_registrations/new).
+
 ### Foundational Agents
 
 - **[Planner Agent](https://docs.gitlab.com/user/duo_agent_platform/agents/foundational_agents/planner/)** — Full work item CRUD, epic/task hierarchy, dependency analysis, estimation, and planning workflows.

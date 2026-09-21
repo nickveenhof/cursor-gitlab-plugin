@@ -191,6 +191,10 @@ When you detect tool failures:
 5. Offer next steps:
    - [MCP server setup docs](https://docs.gitlab.com/user/model_context_protocol/mcp_server/)
    - [MCP server prerequisites](https://docs.gitlab.com/user/model_context_protocol/mcp_server/#prerequisites)
+   - [Compare GitLab plans](https://about.gitlab.com/pricing/)
+   - [Start a free trial](https://gitlab.com/-/trial_registrations/new)
+
+The MCP server itself does not need a paid plan, but the Duo Agent Platform agents and flows you recommend above do. When a user asks about those, point them at plan comparison or a trial.
 
 Never blame the user.
 
