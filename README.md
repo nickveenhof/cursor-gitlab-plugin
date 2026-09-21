@@ -28,11 +28,17 @@ your editor.
 ## Setup
 
 1. Install the **GitLab** plugin from the Cursor Marketplace.
-2. Open **Settings > Cursor Settings > Tools & MCP** and verify the GitLab MCP
-   server appears.
-3. Save and wait for your browser to open the OAuth authorization page.
-   If this does not happen, type `mcp_auth` in the Cursor chat or restart Cursor.
+2. Open **Settings > Cursor Settings > Tools & MCP** and verify that a **GitLab**
+   MCP server appears. The plugin supplies its own configuration, so there is
+   nothing to write by hand.
+3. Wait for your browser to open the OAuth authorization page. If it does not,
+   select **Connect** on the GitLab server, type `mcp_auth` in the Cursor chat,
+   or restart Cursor.
 4. Review and approve the authorization request.
+
+The plugin points at **gitlab.com**. If you use a self-managed instance, read
+the next section before authorizing, because approving the gitlab.com prompt is
+not what you want.
 
 > **"Unverified Dynamic Application" warning**: During OAuth authorization, you
 > may see a warning that Cursor is an unverified application. This is expected —
@@ -50,16 +56,28 @@ your editor.
 
 ### Self-Managed instances
 
-The plugin connects to **gitlab.com** by default. To use a self-managed
-instance instead, copy `.mcp.json.self-managed.example` to `.mcp.json` and
-replace `https://gitlab.example.com` with your instance URL:
+The plugin ships a `.mcp.json` that points at gitlab.com, and Cursor installs it
+into its own plugin cache rather than into your project. No setting changes that
+URL or turns the bundled server off, so pointing the plugin at your instance
+means editing the cached file. Tracked in
+[issue #2](https://gitlab.com/gitlab-org/developer-relations/cursor-gitlab-plugin/-/issues/2).
+
+1. Find the plugin's `.mcp.json` under `~/.cursor/plugins/cache/`.
+2. Replace the host with your instance, keeping the `/api/v4/mcp` path. The
+   `.mcp.json.self-managed.example` file in this repository shows the shape to
+   match.
+3. Remove any GitLab server you configured yourself in `~/.cursor/mcp.json`. Two
+   servers named GitLab leave Cursor asking you to authorize gitlab.com even
+   after your own one is connected.
+4. Restart Cursor and authorize again. Your browser should now open your
+   instance instead of gitlab.com.
 
 ```json
 {
   "mcpServers": {
     "GitLab": {
       "type": "http",
-      "url": "https://your-gitlab-instance.com/api/v4/mcp",
+      "url": "https://gitlab.example.com/api/v4/mcp",
       "headers": {
         "X-Gitlab-Enabled-Mcp-Server-Toolsets": "all"
       }
@@ -67,6 +85,9 @@ replace `https://gitlab.example.com` with your instance URL:
   }
 }
 ```
+
+A plugin update can overwrite the cached file and put gitlab.com back, so check
+this again after upgrading.
 
 ## What's included
 
