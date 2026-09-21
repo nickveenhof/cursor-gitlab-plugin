@@ -53,7 +53,10 @@ replace `https://gitlab.example.com` with your instance URL:
   "mcpServers": {
     "GitLab": {
       "type": "http",
-      "url": "https://your-gitlab-instance.com/api/v4/mcp"
+      "url": "https://your-gitlab-instance.com/api/v4/mcp",
+      "headers": {
+        "X-Gitlab-Enabled-Mcp-Server-Toolsets": "all"
+      }
     }
   }
 }
@@ -65,7 +68,9 @@ replace `https://gitlab.example.com` with your instance URL:
 
 The core of this plugin. The
 [GitLab MCP server](https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/mcp_server/)
-gives Cursor direct access to your GitLab data through these
+gives Cursor direct access to your GitLab data. The plugin's MCP configuration
+sends the `X-Gitlab-Enabled-Mcp-Server-Toolsets: all` header so that all
+available toolsets are enabled, giving you access to these
 [tools](https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/mcp_server_tools/):
 
 | Tool | Description |
