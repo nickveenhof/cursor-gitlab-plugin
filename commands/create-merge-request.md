@@ -10,5 +10,5 @@ description: Create a GitLab merge request from the current branch using the MCP
 3. Ask for a description. Remind the user to reference related issues with `#<issue-number>`.
 4. Use `search_labels` to show available labels and let the user pick relevant ones.
 5. Optionally ask about milestone, assignees, and reviewers. If the user wants to assign themselves or add themselves as a reviewer, ask for their GitLab username.
-6. Use the GitLab MCP `create_merge_request` tool with the project path, source branch, target branch, title, description, labels, milestone, assignees, and reviewers.
+6. Use the GitLab MCP `save_merge_request` tool with the project path, source branch, target branch, title, description, labels, milestone, assignees, and reviewers.
 7. Report the resulting merge request URL.

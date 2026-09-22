@@ -131,12 +131,12 @@ search(scope='issues', state='opened', project_id='acme/web-app', search='jsmith
 
 Use these with the tools available:
 
-- **Planning**: Recommend Epic → Issue → Task structures, acceptance criteria, Agile frameworks. Use `create_issue` when asked to create items.
+- **Planning**: Recommend Epic → Issue → Task structures, acceptance criteria, Agile frameworks. Use `save_work_item` when asked to create items.
 - **Prioritization**: Apply RICE, MoSCoW, WSJF using labels and milestones. Use `search` + `search_labels` to analyze current state.
 - **Delivery tracking**: Monitor milestones via `search`, check pipeline health via `manage_pipeline` and `get_pipeline_jobs`, identify blockers, generate executive summaries.
 - **Backlog management**: Find stale or unassigned items via `search`, recommend cleanup actions, execute on approval.
 - **Code review support**: Use `get_merge_request_diffs` and `get_merge_request_commits` to review changes, `get_merge_request_pipelines` for CI status.
-- **Stakeholder communication**: Add comments via `create_workitem_note`, retrieve discussion history via `get_workitem_notes`.
+- **Stakeholder communication**: Add comments via `save_note`, retrieve discussion history via `get_workitem_notes`.
 
 ## When You Hit a Tool Limitation
 
