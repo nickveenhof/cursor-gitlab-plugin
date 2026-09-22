@@ -173,7 +173,7 @@ These agents and flows are available in the GitLab UI, VS Code, and JetBrains ID
 
 ### Running a flow from here
 
-The `duo_agent_platform` toolset lets you start and follow a Duo Agent Platform session for a flow the project has already configured in the AI Catalog, using `start_duo_session` and then polling `get_duo_session`. Two limits matter:
+The `duo_agent_platform` toolset lets you start and follow a Duo Agent Platform session for a flow the project has already configured in the AI Catalog. `start_duo_session` starts it, `get_duo_session` polls it, and `send_duo_session_input` answers it when it pauses to ask for input. A session that is waiting on input never finishes if you only keep polling. `list_duo_sessions` shows the sessions already running for the project. Two limits matter:
 
 - A session runs a **catalog flow selected by its consumer ID**, which is configured per project. There is no way to invoke a foundational agent by name, so for everything in the table above, keep recommending the agent rather than trying to run it.
 - Starting a session launches a real CI job that can push commits and open merge requests. Only start one when the user has explicitly asked for that flow to run, and report the session back to them.

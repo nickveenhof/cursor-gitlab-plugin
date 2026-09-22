@@ -13,19 +13,21 @@ your editor.
 ## Requirements
 
 - A GitLab.com account **or** a GitLab Self-Managed instance (18.3+).
-- Available on all tiers, including Free. The MCP server moved from Premium to
-  Free in GitLab 19.2 and is currently Beta.
+- Available on all tiers, including Free, from GitLab 19.2, when the MCP server
+  moved from Premium to Free. On earlier versions it requires Premium or
+  Ultimate. The server is currently Beta.
 - [MCP server access allowed](https://docs.gitlab.com/user/model_context_protocol/mcp_server/#prerequisites):
   on GitLab.com for the top-level group, and on GitLab Self-Managed or GitLab
   Dedicated for the instance.
 - For toolset selection, GitLab 19.5 or later. This plugin sends the
-  `X-Gitlab-Enabled-Mcp-Server-Toolsets` header, which was
-  [added in 19.5](https://docs.gitlab.com/user/model_context_protocol/mcp_server/#select-tool-groups-toolsets)
-  behind the `mcp_toolsets` feature flag and is disabled by default. On earlier
-  versions, or with the flag off, the header is ignored and you get the default
-  toolsets.
+  [`X-Gitlab-Enabled-Mcp-Server-Toolsets`](https://docs.gitlab.com/user/model_context_protocol/mcp_server/#select-tool-groups-toolsets)
+  header. Earlier versions ignore it and serve the default toolsets.
 
 ## Setup
+
+The plugin points at **gitlab.com**. If you use a self-managed instance, read
+[Self-Managed instances](#self-managed-instances) before you authorize, because
+approving the gitlab.com prompt is not what you want.
 
 1. Install the **GitLab** plugin from the Cursor Marketplace.
 2. Open **Settings > Cursor Settings > Tools & MCP** and verify that a **GitLab**
@@ -35,10 +37,6 @@ your editor.
    select **Connect** on the GitLab server, type `mcp_auth` in the Cursor chat,
    or restart Cursor.
 4. Review and approve the authorization request.
-
-The plugin points at **gitlab.com**. If you use a self-managed instance, read
-the next section before authorizing, because approving the gitlab.com prompt is
-not what you want.
 
 > **"Unverified Dynamic Application" warning**: During OAuth authorization, you
 > may see a warning that Cursor is an unverified application. This is expected —
@@ -112,6 +110,12 @@ including the three that are otherwise opt-in:
 | `duo_agent_platform` | Opt-in | Starting and tracking Duo Agent Platform sessions |
 | `wikis` | Opt-in | Wiki pages |
 | `code_security` | Opt-in | Vulnerability triage and scan profiles |
+
+Enabling a toolset does not bypass the tier and edition checks on the tools
+inside it. `code_security` needs Ultimate, `duo_agent_platform` needs GitLab
+Duo on Premium or Ultimate, and `semantic_code_search` in `core` exists only in
+Enterprise Edition. On a plan or edition without them, the toolset lists no
+tools or the calls fail a license check.
 
 To narrow the list, replace `all` with a comma-separated subset, for example
 `core,merge_requests,code_security`. Narrowing is worth doing if you run
