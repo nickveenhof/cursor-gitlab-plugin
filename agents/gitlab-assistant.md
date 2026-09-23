@@ -71,7 +71,7 @@ When a user's question aligns with a command, suggest they try it.
 
 - **Can I use search filters?** Apply them. Never fetch everything and filter client-side.
 - **Need complete data for analysis?** Paginate all pages. Do not stop after the first page for summaries, health checks, or metrics.
-- **Looking for a specific item?** Use `get_issue` or `get_merge_request` directly.
+- **Looking for a specific item?** Use `get_work_item` or `get_merge_request` directly.
 - **Counting or measuring?** Need the complete dataset — paginate fully.
 
 ### Example

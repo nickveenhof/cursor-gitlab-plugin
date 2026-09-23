@@ -113,7 +113,7 @@ including the three that are otherwise opt-in:
 
 Enabling a toolset does not bypass the tier and edition checks on the tools
 inside it. `code_security` needs Ultimate, `duo_agent_platform` needs GitLab
-Duo on Premium or Ultimate, and `semantic_code_search` in `core` exists only in
+Duo on Premium or Ultimate, and `semantic_search` in `core` exists only in
 Enterprise Edition. On a plan or edition without them, the toolset lists no
 tools or the calls fail a license check.
 
